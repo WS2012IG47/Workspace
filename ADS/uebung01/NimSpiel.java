@@ -18,9 +18,7 @@ public class NimSpiel {
 				break;
 			}
 			
-			println("Der rechner zieht " + cpuRunde +" Ho(ö)lz(er) es sind " +
-					anzahlStreichhölzer + " Ho(ö)lz(er) übrig" );
-			
+			println("Der rechner zieht " + cpuRunde +" Ho(ö)lz(er) es sind " + anzahlStreichhölzer + " Ho(ö)lz(er) übrig" );
 			println("ziehe bitte 1 - 3 Streichhölzer");
 			
 			int genommeneHölzer = readInt();
