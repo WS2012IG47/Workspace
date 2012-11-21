@@ -9,5 +9,23 @@ public class NeueKlasse {
 		// TODO Auto-generated method stub
 		System.out.println("Boah, voll die Klasse ey!");
 	}
+	
+	//bla
+	//bla
+	//bla
+	//bla
+	//bla
+	//bla
+	//bla
+	//bla
+	//bla
+	//bla
+	//bla
+	//bla
+	//bla
+	//bla
+	//bla
+	//bla
+	//bla
 
 }
