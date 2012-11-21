@@ -10,22 +10,12 @@ public class NeueKlasse {
 		System.out.println("Boah, voll die Klasse ey!");
 	}
 	
-	//bla
-	//bla
-	//bla
-	//bla
-	//bla
-	//bla
-	//bla
-	//bla
-	//bla
-	//bla
-	//bla
-	//bla
-	//bla
-	//bla
-	//bla
-	//bla
-	//bla
+	//bla blub	//bla blub	//bla blub	//bla blub
+	//bla blub	//bla blub	//bla blub	//bla blub
+	//bla blub	//bla blub	//bla blub	//bla blub
+	//bla blub	//bla blub	//bla blub	//bla blub
+	//bla blub	//bla blub	//bla blub	//bla blub
+	//bla blub	//bla blub	//bla blub	//bla blub
+	//bla blub	//bla blub	//bla blub	//bla blub
 
 }
