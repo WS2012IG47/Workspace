@@ -8,6 +8,19 @@ public class NeueKlasse {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println("Boah, voll die Klasse ey!");
-	}
+		System.out.println("Boah, voll die Klasse ey!");
+		System.out.println("Boah, voll die Klasse ey!");
+		System.out.println("Boah, voll die Klasse ey!");
+		System.out.println("Boah, voll die Klasse ey!");
+		System.out.println("Boah, voll die Klasse ey!");
+		System.out.println("Boah, voll die Klasse ey!");
+		System.out.println("Boah, voll die Klasse ey!");
+		System.out.println("Boah, voll die Klasse ey!");
+		
+		
+		
+		
+		
+	}// test und so
 
 }
