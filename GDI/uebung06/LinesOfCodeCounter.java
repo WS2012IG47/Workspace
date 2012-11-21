@@ -146,10 +146,9 @@ public class LinesOfCodeCounter {
 					}
 					needleZähler++;
 				} else {
-					if (needleZähler > 0) { // Dies ist der Fall wenn ein (oder
-											// mehrere)
-											// übereinstimmende Chars gefunden wurden.
-
+					if (needleZähler > 0) { 
+						// Dies ist der Fall wenn ein (oder mehrere)
+						// übereinstimmende Chars gefunden wurden.
 						// Zurücksetzen des needleZählers, falls bereits ein oder
 						// mehrere identische Chars gefunden wurden
 						// und der darauffolgende dann nichtmehr dem needle
