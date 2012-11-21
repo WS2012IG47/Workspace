@@ -32,15 +32,18 @@ public class  searchFunctionsPerformanceTest{
 	
 	public static int searchFirstIndex(int[] targetArray, int searchNumber)
 	{	
+		int vergleichzähler = 0;
+		
+		vergleichzähler++;
 		for(int i = 0; i < targetArray.length; i++)
 		{
 			if(targetArray[i] == searchNumber)
 			{
-				return i;
+				return vergleichzähler;
 			}
 		}
 		
-		return -1;
+		return vergleichzähler;
 	}
 	
 	public static int searchBinaryRecursive(int[] targetArray, int searchInt, int bereichAnfang, int bereichEnde) {
