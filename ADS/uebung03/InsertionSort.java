@@ -5,7 +5,7 @@ import static gdi.MakeItSimple.*;
 public class InsertionSort {
 
 	public static void main(String[] args) {
-		int array[] = new int[10];
+		int array[] = new int[14];
 		int i = 0;
 		int z = 0;
 		int p = 0;
