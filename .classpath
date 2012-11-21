@@ -3,6 +3,6 @@
 	<classpathentry kind="src" path="GDI"/>
 	<classpathentry kind="src" path="ADS"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="Y:/workspace/gdi12.jar"/>
+	<classpathentry kind="lib" path="/Users/Padombar/Dropbox/Informatik/workspace/gdi12.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
