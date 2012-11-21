@@ -1,4 +1,3 @@
-
 package uebung04;
 
 import static gdi.MakeItSimple.*;
@@ -17,7 +16,7 @@ public class Conversion {
 		while (zähler < exponent - 1) {
 			// Abfangen eines Überlaufs.
 			// -1 wird als Signal für ein ungültiges, 
-// bzw. überlaufendes Integer übergeben.
+			// bzw. überlaufendes Integer übergeben.
 			if (ergebnis > Integer.MAX_VALUE / basis) { 
 				return -1;
 			}
@@ -35,7 +34,7 @@ public class Conversion {
 		int zähler = 0;
 		int charValue = 0;
 
-// Schleife zur Prüfung und Konvertierung der einzelnen Zeichen.
+		// Schleife zur Prüfung und Konvertierung der einzelnen Zeichen.
 		while (zähler < strLen(digits)) {
 
 			int momentaneStelle = strCharAt(digits, zähler);
@@ -50,17 +49,17 @@ public class Conversion {
 			}
 			else {
 				// Überprüfung der aktuelle Stelle auf einen 
-// Überlauf durch Faktorberechnung.
+				// Überlauf durch Faktorberechnung.
 				if(factor(10, strLen(digits) - zähler - 1) == -1) {
 					return 0;
 				}
-// Berechnung der aktuellen Stelle durch Faktorberechnung.	
-				charValue = (momentaneStelle - '0') * factor(10, strLen(digits) - 
-         zähler - 1);
+				// Berechnung der aktuellen Stelle durch Faktorberechnung.	
+				charValue = (momentaneStelle - '0') * factor(10, strLen(digits) - zähler - 1);
 				
 				// Prüfung des Ergebnisses auf Überlauf durch 
-// Addition der aktuellen Stelle.
-				if (ergebnis > Integer.MAX_VALUE - charValue) { 							return 0;
+				// Addition der aktuellen Stelle.
+				if (ergebnis > Integer.MAX_VALUE - charValue) { 							
+					return 0;
 				}
 				
 				// Dem Ergebnis wird der Wert der aktuelle Stelle aufaddiert.
