@@ -34,7 +34,7 @@ public class searchFunctionsPerformanceTest {
 			int3 /= 7500;
 			int4 /= 7500;
 
-			println("Testergebnisse bei einer Arraygröße von:" + Arraygröße + " = " + int1 + " | " + int2 + " | " + int3 + " | " + int4);
+			println("Testergebnisse bei einer Arraygröße von: " + Arraygröße + " = " + int1 + " | " + int2 + " | " + int3 + " | " + int4);
 
 			Arraygröße = Arraygröße * 2;
 		}
