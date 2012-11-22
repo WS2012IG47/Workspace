@@ -8,7 +8,7 @@ public class searchFunctionsPerformanceTest {
 
 		int Arraygröße = 2048;
 
-		println("Statistische Testreihe zur ermittlung der durschnittlichen Anzahl vergleiche bei verschiedenen SucheAlgorithmen.");
+		println("Statistische Testreihe zur Ermittlung der durschnittlichen Anzahl vergleiche bei verschiedenen Suchalgorithmen.");
 		println("Die Daten wurden aus 7500 automatisierten Testläufen ermittelt.");
 		println();
 		println("sequentielle suche (letzter Index) | sequentielle suche (erster Index) | binäre suche rekursiv implementiert | binäre suche iterativ implementiert");
