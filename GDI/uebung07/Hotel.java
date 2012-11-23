@@ -69,7 +69,7 @@ interface Hotel{
  * @param artikelnummer
  * @param reservierungsnummer
  */
-	void bestellungAufsZimmer(int artikelnummer, int reservierungsnummer)
+	void bestellungAufsZimmer(int artikelnummer, int reservierungsnummer);
 	
 	
 }
