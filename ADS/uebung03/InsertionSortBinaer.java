@@ -46,7 +46,6 @@ public class InsertionSortBinaer {
 // Schleife zur Ausgabe des sortierten Arrays.
 		for (int i = 0; i < array.length; i++){
 			print(array[i]);
-			i++;
 		}
 		println();
 		println();
@@ -73,6 +72,6 @@ public class InsertionSortBinaer {
 				bereichEnde = i - 1;
 			}
 		}
-		return i;
+		return bereichAnfang;
 	}
 }
