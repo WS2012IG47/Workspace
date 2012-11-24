@@ -3,6 +3,13 @@ import static gdi.MakeItSimple.*;
 
 public class InsertionSort {
 
+	// anzahlDerVergleiche = comparisonCounter
+	// anzahlDerVertauschungen = changeCounter
+	// ausgabeInsertionSortBinary = outputInsertionSort
+	// ausgabeInsertionSort = outputInsertionSort
+	// bereichAnfang = searchAreaStart
+	// bereichEnde = searchAreaEnd
+	
 	public static void main(String[] args) {
 		int[] array = new int[1024];
 		int[] array2 = new int[2048];
@@ -40,7 +47,7 @@ public class InsertionSort {
 		int newValue, j, changeCounter, comparisonCounter;
 		changeCounter = comparisonCounter = 0;
 		
-		for (int i = 0; i < array.length; i++){
+		for (int i = 1; i < array.length; i++){
 			newValue = array[i];
 			j = i;
 			comparisonCounter++;
@@ -51,7 +58,6 @@ public class InsertionSort {
 			}
 			array[j] = newValue;
 		}
-		comparisonCounter -= 1;
 		String outputInsertionSort = (array.length + " | " + changeCounter + " | " + comparisonCounter);
 		
 		return outputInsertionSort;
@@ -100,10 +106,3 @@ public class InsertionSort {
 		return searchAreaStart;
 	}	
 }
-
-// anzahlDerVergleiche = comparisonCounter
-// anzahlDerVertauschungen = changeCounter
-// ausgabeInsertionSortBinary = outputInsertionSort
-// ausgabeInsertionSort = outputInsertionSort
-// bereichAnfang = searchAreaStart
-// bereichEnde = searchAreaEnd
