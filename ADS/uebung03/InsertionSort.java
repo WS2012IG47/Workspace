@@ -4,102 +4,106 @@ import static gdi.MakeItSimple.*;
 public class InsertionSort {
 
 	public static void main(String[] args) {
-		int[] array = new int[10];
+		int[] array = new int[1024];
+		int[] array2 = new int[2048];
+		int[] array3 = new int[4096];
+		
 	
-		// Befüllen des Arrays mit zufälligen Zahlenwerten.
+// Loop to fill the arrays with random numbers.
 		for (int i = 0; i < array.length; i++){
 			array[i] = (int)Math.floor(Math.random() * array.length);
 		}
-		// Ausgabe des unsortierten, generierten Arrays.
 		for (int i = 0; i < array.length; i++){
-			print(array[i] + "|");
+			array2[i] = (int)Math.floor(Math.random() * array.length);
 		}
+		for (int i = 0; i < array.length; i++){
+			array3[i] = (int)Math.floor(Math.random() * array.length);
+		}
+		
+// Print the sorted arrays and the counted changes and comparisons.		
+		println("Insertion Sort");
+		println("Arraygröße | Anzahl der Vertauschungen | Anzahl der Vergleiche");
+		println(insertionSort(array));
+		println(insertionSort(array2));
+		println(insertionSort(array3));
 		println();
-		println();
-			
-		insertionSort(array);
-		insertionSortBinary(array);
+		println("Duch Binäre Suche erweiterter Insertion Sort");
+		println("Arraygröße | Anzahl der Vertauschungen | Anzahl der Vergleiche");
+		println(insertionSortBinary(array));
+		println(insertionSortBinary(array2));
+		println(insertionSortBinary(array3));
 	}
 	
-	public static void ausgabeInsertionSort(int[] insertionSortArray, int anzahlDerVertauschungen, int anzahlDerVergleiche){
-		for (int i = 0; i < insertionSortArray.length; i++){
-			print(insertionSortArray[i] + "|");
-		}
-		println();
-		println("Anzahl der Vergleiche: " + anzahlDerVergleiche);
-		println("Anzahl der Vertauschungen: " + anzahlDerVertauschungen);
-		println();
-	}
-	
-	public static void ausgabeInsertionSortBinary(int[] insertionSortBinaryArray, int anzahlDerVertauschungen, int anzahlDerVergleiche){
-		for (int i = 0; i < insertionSortBinaryArray.length; i++){
-			print(insertionSortBinaryArray[i] + "|");
-		}
-		println();
-		println("Anzahl der Vergleiche: " + anzahlDerVergleiche);
-		println("Anzahl der Vertauschungen: " + anzahlDerVertauschungen);
-	}
-	
-	
-// Einfacher Insertion Sort.
-	public static void insertionSort(int[] array){
-		int newValue, j, anzahlDerVertauschungen, anzahlDerVergleiche;
-		anzahlDerVertauschungen = anzahlDerVergleiche = 0;
+// Insertion Sort.
+// The actual integer will be moved one field to the left until the integer in front of the moved integer isn't bigger.
+	public static String insertionSort(int[] array){
+		int newValue, j, changeCounter, comparisonCounter;
+		changeCounter = comparisonCounter = 0;
 		
 		for (int i = 0; i < array.length; i++){
 			newValue = array[i];
 			j = i;
-			anzahlDerVergleiche++;
+			comparisonCounter++;
 			while (j > 0 && array[j - 1] > newValue){
 				array[j] = array[j - 1];
 				j--;
-				anzahlDerVertauschungen++;
+				changeCounter++;
 			}
 			array[j] = newValue;
 		}
+		comparisonCounter -= 1;
+		String outputInsertionSort = (array.length + " | " + changeCounter + " | " + comparisonCounter);
 		
-		ausgabeInsertionSort(array, anzahlDerVertauschungen, anzahlDerVergleiche);
-		return;
+		return outputInsertionSort;
 	}
 	
-// Insertion Sort mit Binärer Suche.
-	public static void insertionSortBinary(int[] array){
-		int anzahlDerVertauschungen = 0;
-		int anzahlDerVergleiche = 0;
+// Insertion Sort with Binary Search.
+// The target position for the actual integer will be find by Binary Search. 
+// The values on the right side of the target position will be moved one field to the right so the actual integer can be inserted.
+	public static String insertionSortBinary(int[] array){
+		int changeCounter = 0;
+		int comparisonCounter = 0;
 		
 		for (int i = 1; i < array.length; i++){
 			int oldValue = array[i];
 			
 			int targetPosition = searchBinary(array, oldValue, 0, i - 1);	// oldValue oder array[i]
-				
+			
 				for (int j = i; j > targetPosition; j--){
 					array[j] = array[j - 1];
-					anzahlDerVertauschungen++;
+					changeCounter++;
 				}	
 		}
-		ausgabeInsertionSortBinary(array, anzahlDerVertauschungen, anzahlDerVergleiche);
-		return;
+		String outputInsertionSortBinary = (array.length + " | " + changeCounter + " | " + comparisonCounter);
+		return outputInsertionSortBinary;
 	}
 	
-// Binäre Suche	
-	public static int searchBinary(int[] targetArray, int searchInt, int bereichAnfang, int bereichEnde) {
+// Binary Search
+	public static int searchBinary(int[] targetArray, int searchInt, int searchAreaStart, int searchAreaEnd) {
 		int i = 0;
-		while(bereichAnfang <= bereichEnde){
+		while(searchAreaStart <= searchAreaEnd){
 				
-			i = ((bereichEnde - bereichAnfang) / 2) + bereichAnfang;
+			i = ((searchAreaEnd - searchAreaStart) / 2) + searchAreaStart;
 			
 			if (targetArray[i] == searchInt) {
 				return i;
 			}
 				
 			if (targetArray[i] < searchInt) {
-				bereichAnfang = i + 1;
+				searchAreaStart = i + 1;
 			}
 				
 			if (targetArray[i] > searchInt) {
-				bereichEnde = i - 1;
+				searchAreaEnd = i - 1;
 			}
 		}
-		return bereichAnfang;
+		return searchAreaStart;
 	}	
 }
+
+// anzahlDerVergleiche = comparisonCounter
+// anzahlDerVertauschungen = changeCounter
+// ausgabeInsertionSortBinary = outputInsertionSort
+// ausgabeInsertionSort = outputInsertionSort
+// bereichAnfang = searchAreaStart
+// bereichEnde = searchAreaEnd
