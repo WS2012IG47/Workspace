@@ -16,7 +16,7 @@ public class InsertionSort {
 		int[] array3 = new int[4096];
 		
 	
-// Loop to fill the arrays with random numbers.
+		// Loops to fill the arrays with random numbers.
 		for (int i = 0; i < array.length; i++){
 			array[i] = (int)Math.floor(Math.random() * array.length);
 		}
@@ -27,7 +27,7 @@ public class InsertionSort {
 			array3[i] = (int)Math.floor(Math.random() * array.length);
 		}
 		
-// Print the sorted arrays and the counted changes and comparisons.		
+		// Print the sorted arrays and the counted changes and comparisons.		
 		println("Insertion Sort");
 		println("Arraygröße | Anzahl der Vertauschungen | Anzahl der Vergleiche");
 		println(insertionSort(array));
@@ -41,8 +41,8 @@ public class InsertionSort {
 		println(insertionSortBinary(array3));
 	}
 	
-// Insertion Sort.
-// The actual integer will be moved one field to the left until the integer in front of the moved integer isn't bigger.
+	// Insertion Sort.
+	// The actual integer will be moved one field to the left until the integer in front of the moved integer isn't bigger.
 	public static String insertionSort(int[] array){
 		int newValue, j, changeCounter, comparisonCounter;
 		changeCounter = comparisonCounter = 0;
@@ -63,9 +63,9 @@ public class InsertionSort {
 		return outputInsertionSort;
 	}
 	
-// Insertion Sort with Binary Search.
-// The target position for the actual integer will be find by Binary Search. 
-// The values on the right side of the target position will be moved one field to the right so the actual integer can be inserted.
+	// Insertion Sort with Binary Search.
+	// The target position for the actual integer will be find by Binary Search. 
+	// The values on the right side of the target position will be moved one field to the right so the actual integer can be inserted.
 	public static String insertionSortBinary(int[] array){
 		int changeCounter = 0;
 		int comparisonCounter = 0;
@@ -73,7 +73,7 @@ public class InsertionSort {
 		for (int i = 1; i < array.length; i++){
 			int oldValue = array[i];
 			
-			int targetPosition = searchBinary(array, oldValue, 0, i - 1);	// oldValue oder array[i]
+			int targetPosition = searchBinary(array, oldValue, 0, i - 1);
 			
 				for (int j = i; j > targetPosition; j--){
 					array[j] = array[j - 1];
@@ -84,7 +84,9 @@ public class InsertionSort {
 		return outputInsertionSortBinary;
 	}
 	
-// Binary Search
+	// Binary Search
+	// The binary search is looking for the position where the searched integer has to be inserted.
+	// It searches for the right position in the already sorted area of the array.
 	public static int searchBinary(int[] targetArray, int searchInt, int searchAreaStart, int searchAreaEnd) {
 		int i = 0;
 		while(searchAreaStart <= searchAreaEnd){

@@ -3,24 +3,32 @@ package uebung03;
 import static gdi.MakeItSimple.*;
 
 public class searchFunctionsPerformanceTest {
-
+	
+// Geänderte Variablen
+// Arraygröße = ArraySize
+// vergleichzähler = comparisonCounter
+// bereichAnfang = searchAreaStart
+// bereichEnde = searchAreaEnd
+	
 	public static void main(String[] args) {
 
-		int Arraygröße = 2048;
+		int ArraySize = 2048;
 
 		println("Statistische Testreihe zur Ermittlung der durschnittlichen Anzahl vergleiche bei verschiedenen Suchalgorithmen.");
 		println("Die Daten wurden aus 7500 automatisierten Testläufen ermittelt.");
 		println();
 		println("sequentielle suche (letzter Index) | sequentielle suche (erster Index) | binäre suche rekursiv implementiert | binäre suche iterativ implementiert");
-
+		
+		// Loop to fill 3 arrays with different sizes with numbers.
 		for (int i2 = 0; i2 < 3; i2++) {
-			int[] testArray = new int[Arraygröße];
+			int[] testArray = new int[ArraySize];
 			for (int i = 0; i < testArray.length; i++) {
 				testArray[i] = i;
 			}
 
 			int int1 = 0, int2 = 0, int3 = 0, int4 = 0;
 
+			// Make 7500 testings with different random numbers.
 			for (int i = 0; i < 7500; i++) {
 				int testNumber = (int) Math.floor(Math.random() * testArray.length);
 
@@ -29,84 +37,93 @@ public class searchFunctionsPerformanceTest {
 				int3 += searchBinaryRecursive(testArray, testNumber, 0, testArray.length, 0);
 				int4 += searchBinary(testArray, testNumber, 0, testArray.length);
 			}
+			
+			// Calculating the average sum from 7500 testings.
 			int1 /= 7500;
 			int2 /= 7500;
 			int3 /= 7500;
 			int4 /= 7500;
 
-			println("Testergebnisse bei einer Arraygröße von: " + Arraygröße + " = " + int1 + " | " + int2 + " | " + int3 + " | " + int4);
+			println("Testergebnisse bei einer ArraySize von: " + ArraySize + " = " + int1 + " | " + int2 + " | " + int3 + " | " + int4);
 
-			Arraygröße = Arraygröße * 2;
+			ArraySize = ArraySize * 2;
 		}
 	}
-
+	
+	// Search for the last index in the array and return it's position.
+	// The complete array will be checked and the last saved position will be returned.	
 	public static int searchLastIndex(int[] targetArray, int searchNumber) {
-		int vergleichzähler = 0;
+		int comparisonCounter = 0;
 
 		for (int i = 0; i < targetArray.length; i++) {
-			vergleichzähler++;
+			comparisonCounter++;
 		}
-
-		return vergleichzähler;
+		return comparisonCounter;
 	}
-
+	
+	// Search for the first position of the number in the array.	
+	// The method returns as soon as the first postition of the number were found.
 	public static int searchFirstIndex(int[] targetArray, int searchNumber) {
-		int vergleichzähler = 0;
+		int comparisonCounter = 0;
 
 		for (int i = 0; i < targetArray.length; i++) {
-			vergleichzähler++;
+			comparisonCounter++;
 			if (targetArray[i] == searchNumber) {
-				return vergleichzähler;
+				return comparisonCounter;
 			}
 		}
-
-		return vergleichzähler;
+		return comparisonCounter;
 	}
-
+	
+	// Recursive binary search.
+	// As long as the checked number is smaller or bigger than the searched one the method returns to the beginning and starts again with 
+	// different values.
 	public static int searchBinaryRecursive(int[] targetArray, int searchInt,
-			int bereichAnfang, int bereichEnde, int vergleichzähler) {
+			int searchAreaStart, int searchAreaEnd, int comparisonCounter) {
 
-		int i = ((bereichEnde - bereichAnfang) / 2) + bereichAnfang;
+		int i = ((searchAreaEnd - searchAreaStart) / 2) + searchAreaStart;
 
-		if (bereichAnfang > bereichEnde) {
-			return vergleichzähler;
+		if (searchAreaStart > searchAreaEnd) {
+			return comparisonCounter;
 		}
-		vergleichzähler++;
+		comparisonCounter++;
 		if (targetArray[i] == searchInt) {
-			return vergleichzähler;
+			return comparisonCounter;
 		}
 		if (targetArray[i] < searchInt) {
 			return searchBinaryRecursive(targetArray, searchInt, i + 1,
-					bereichEnde, vergleichzähler);
+					searchAreaEnd, comparisonCounter);
 		}
 		if (targetArray[i] > searchInt) {
-			return searchBinaryRecursive(targetArray, searchInt, bereichAnfang,
-					i - 1, vergleichzähler);
+			return searchBinaryRecursive(targetArray, searchInt, searchAreaStart,
+					i - 1, comparisonCounter);
 		}
-
-		return vergleichzähler;
+		return comparisonCounter;
 	}
-
+	
+	// Binary search.
+	// The binary search without recursion is working as a loop, that changes the values if the checked number 
+	// is bigger or smaller than the searched one.
 	public static int searchBinary(int[] targetArray, int searchInt,
-			int bereichAnfang, int bereichEnde) {
+			int searchAreaStart, int searchAreaEnd) {
 
-		int vergleichzähler = 0;
+		int comparisonCounter = 0;
 
-		while (bereichAnfang <= bereichEnde) {
+		while (searchAreaStart <= searchAreaEnd) {
 
-			int i = ((bereichEnde - bereichAnfang) / 2) + bereichAnfang;
+			int i = ((searchAreaEnd - searchAreaStart) / 2) + searchAreaStart;
 
-			vergleichzähler++;
+			comparisonCounter++;
 			if (targetArray[i] == searchInt) {
-				return vergleichzähler;
+				return comparisonCounter;
 			}
 
 			if (targetArray[i] < searchInt) {
-				bereichAnfang = i + 1;
+				searchAreaStart = i + 1;
 			}
 
 			if (targetArray[i] > searchInt) {
-				bereichEnde = i - 1;
+				searchAreaEnd = i - 1;
 			}
 		}
 		return -1;
