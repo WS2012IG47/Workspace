@@ -1,6 +1,5 @@
 package uebung07;
 
-
 interface Hotel{
 /**
  * Ein Zimmer für einen gewissen Zeitraum
