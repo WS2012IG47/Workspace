@@ -1,6 +1,12 @@
 package uebung03;
-
 import static gdi.MakeItSimple.*;
+
+/*
+ * Gruppe 4 - 7
+ * Philip Dombrowski, Matrikelnummer: 1220235
+ * Tobias Kunz, Matrikelnummer: 1232749
+ * Timm Dobhan, Matrikelnummer: 1232995
+ */
 
 public class searchFunctionsPerformanceTest {
 	
