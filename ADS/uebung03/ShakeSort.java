@@ -76,7 +76,7 @@ public class ShakeSort {
 					unsorted = true;
 
 					// print numbers if LOOP finished ONCE.
-					println(makeMarkedArray(targetArray, i, i + 1));
+					println(makeMarkedArray(targetArray, i - 1, i));
 			}
 		}
 	}
@@ -86,9 +86,13 @@ public class ShakeSort {
 		String out = "";
 		int i = 0;
 		do {
-			if (i == k || i == j) {
-				out += "|" + a[i] + "|";
-			} else {
+			if (i == k) {
+				out += "{" + a[i] + "-";
+			}
+			else if(i == j){
+				out += "-" + a[i] + "}";
+			}
+			else {
 				out += " " +  a[i] + " ";
 			}
 		} while (++i < a.length);
