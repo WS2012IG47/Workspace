@@ -9,31 +9,31 @@ import static gdi.MakeItSimple.*;
  */
 
 public class InsertionSort {
-
-	// anzahlDerVergleiche = comparisonCounter
-	// anzahlDerVertauschungen = changeCounter
-	// ausgabeInsertionSortBinary = outputInsertionSort
-	// ausgabeInsertionSort = outputInsertionSort
-	// bereichAnfang = searchAreaStart
-	// bereichEnde = searchAreaEnd
+	static int comparisonCounterBinary = 0;
 	
 	public static void main(String[] args) {
 		int[] array = new int[1024];
 		int[] array2 = new int[2048];
 		int[] array3 = new int[4096];
 		
-	
-		// Loops to fill the arrays with random numbers.
+		int[] array4 = new int[1024];
+		int[] array5 = new int[2048];
+		int[] array6 = new int[4096];
+		
+			// Loops to fill the arrays with random numbers.
 		for (int i = 0; i < array.length; i++){
 			array[i] = (int)Math.floor(Math.random() * array.length);
+			array4[i] = array[i];
 		}
 		for (int i = 0; i < array.length; i++){
-			array2[i] = (int)Math.floor(Math.random() * array.length);
+			array2[i] = (int)Math.floor(Math.random() * array2.length);
+			array5[i] = array2[i];
 		}
 		for (int i = 0; i < array.length; i++){
-			array3[i] = (int)Math.floor(Math.random() * array.length);
+			array3[i] = (int)Math.floor(Math.random() * array3.length);
+			array6[i] = array3[i];
 		}
-		
+	
 		// Print the sorted arrays and the counted changes and comparisons.		
 		println("Insertion Sort");
 		println("Arraygröße | Anzahl der Vertauschungen | Anzahl der Vergleiche");
@@ -43,9 +43,16 @@ public class InsertionSort {
 		println();
 		println("Duch Binäre Suche erweiterter Insertion Sort");
 		println("Arraygröße | Anzahl der Vertauschungen | Anzahl der Vergleiche");
-		println(insertionSortBinary(array));
-		println(insertionSortBinary(array2));
-		println(insertionSortBinary(array3));
+		println(insertionSortBinary(array4));
+		println(insertionSortBinary(array5));
+		println(insertionSortBinary(array6));
+	}
+	
+	public static void output(int[] array){
+		for (int i = 0; i < array.length; i++){
+			print(array[i] + " ");
+		}	
+		println();
 	}
 	
 	// Insertion Sort.
@@ -53,20 +60,27 @@ public class InsertionSort {
 	public static String insertionSort(int[] array){
 		int newValue, j, changeCounter, comparisonCounter;
 		changeCounter = comparisonCounter = 0;
-		
+		// output(array);
 		for (int i = 1; i < array.length; i++){
 			newValue = array[i];
 			j = i;
-			comparisonCounter++;
+			boolean comparisonCounterisIncreased = false;
+			
 			while (j > 0 && array[j - 1] > newValue){
 				array[j] = array[j - 1];
 				j--;
 				changeCounter++;
-			}
+				comparisonCounter++;
+				comparisonCounterisIncreased = true;
+			}	
+			if (!comparisonCounterisIncreased)
+			{
+				comparisonCounter++;
+			}		
 			array[j] = newValue;
 		}
+		// output(array);
 		String outputInsertionSort = (array.length + " | " + changeCounter + " | " + comparisonCounter);
-		
 		return outputInsertionSort;
 	}
 	
@@ -75,8 +89,7 @@ public class InsertionSort {
 	// The values on the right side of the target position will be moved one field to the right so the actual integer can be inserted.
 	public static String insertionSortBinary(int[] array){
 		int changeCounter = 0;
-		int comparisonCounter = 0;
-		
+
 		for (int i = 1; i < array.length; i++){
 			int oldValue = array[i];
 			
@@ -85,9 +98,11 @@ public class InsertionSort {
 				for (int j = i; j > targetPosition; j--){
 					array[j] = array[j - 1];
 					changeCounter++;
-				}	
+				}
+				array[targetPosition] = oldValue;
+				changeCounter++;
 		}
-		String outputInsertionSortBinary = (array.length + " | " + changeCounter + " | " + comparisonCounter);
+		String outputInsertionSortBinary = (array.length + " | " + changeCounter + " | " + comparisonCounterBinary);
 		return outputInsertionSortBinary;
 	}
 	
@@ -100,14 +115,13 @@ public class InsertionSort {
 				
 			i = ((searchAreaEnd - searchAreaStart) / 2) + searchAreaStart;
 			
+			comparisonCounterBinary++;
 			if (targetArray[i] == searchInt) {
 				return i;
 			}
-				
 			if (targetArray[i] < searchInt) {
 				searchAreaStart = i + 1;
-			}
-				
+			}	
 			if (targetArray[i] > searchInt) {
 				searchAreaEnd = i - 1;
 			}
