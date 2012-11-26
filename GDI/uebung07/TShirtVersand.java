@@ -10,7 +10,7 @@ interface TShirtVersand{
  * @param bezahlung Auf welche Art möchte der Kunde bezahlen. Kreditkarte, PayPal, EC-Karte, Überweisung, Barzahlung bei Abholung, Rechnung.
  * @return Es wird eine Bestellbestätigung ausgegeben, in der für den Kunden alle Artikel und Daten ersichtlich sind.
  */
-	String bestellung(Personendaten kunde, int artikelnummer, int anzahl, int bezahlung)
+	String bestellung(Personendaten kunde, int artikelnummer, int anzahl, int bezahlung);
 
 /**
  * 	Um eine Rechnung erstellen zu können, benötigt man die Kundendaten und die Bestellten Artikel, die man durch die Bestellnummer abfragen kann.
@@ -21,12 +21,13 @@ interface TShirtVersand{
 	String rechnungen(Personendaten kunde, int bestellnummer);	 
 		
 /**
- * 	
- * @param artikelnummer
- * @param anzahl
- * @return
+ * 	Dieses Interface gibt die Verfügbarkeit der einzelnen Artikel an. Diese Information sit sowohl für den Shop Betrieber wie auch für den Kunden nützlich.
+ * @param artikelnummer Hinter der Artikelnummer ist ein einziger, unverwechselbarer Artikel aus dem Shop gespeichert.
+ * @param Anzahl Gibt an, wieviele Artikel mit dieser Artikelnummer noch auf Lager sind.
+ * @param verfügbarkeit Falls der Artikel nicht verfügbar ist, wird das voraussichtliche Verfügbarkeitsdatum angegeben.
+ * @return Die Verfügbarkeit wird als String zu dem jeweiligen Artikel angezeigt.
  */
-	String bestellstatus(int artikelnummer, int anzahl, )
+	String verfügbarkeit(int Artikelnummer, int Anzahl, String erneuteLieferung);
 	
 /**
 * Falls der Kunde seine Bestellung stornieren möchte. 	
