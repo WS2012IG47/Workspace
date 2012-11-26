@@ -1,11 +1,46 @@
 package uebung07;
  
 interface TShirtVersand{
+
+/**
+ * Um eine Bestellung aufgeben zu können, werden sämtliche unten stehende Daten benötigt.	
+ * @param kunde Alle gespeicherten Daten über den Kunden, wie zum Beispiel Name, Vorname, Adresse, Telefonnummer...
+ * @param artikelnummer Hinter der Artikelnummer ist ein einziger, unverwechselbarer Artikel aus dem Shop gespeichert.
+ * @param anzahl Die Anzahl der einzenen Artikel (Artikelnummern)
+ * @param bezahlung Auf welche Art möchte der Kunde bezahlen. Kreditkarte, PayPal, EC-Karte, Überweisung, Barzahlung bei Abholung, Rechnung.
+ * @return Es wird eine Bestellbestätigung ausgegeben, in der für den Kunden alle Artikel und Daten ersichtlich sind.
+ */
+	String bestellung(Personendaten kunde, int artikelnummer, int anzahl, int bezahlung)
+
+/**
+ * 	Um eine Rechnung erstellen zu können, benötigt man die Kundendaten und die Bestellten Artikel, die man durch die Bestellnummer abfragen kann.
+ * @param kunde Alle gespeicherten Daten über den Kunden, wie zum Beispiel Name, Vorname, Adresse, Telefonnummer...
+ * @param bestellnummer Mit der Bestellnummer kann man abfragen, welche Artikel in welcher Anzahl wann und wie bestellt wurden.
+ * @return Es wird eine Rechnung ausgegeben.
+ */
 	String rechnungen(Personendaten kunde, int bestellnummer);	 
-	
-	String bestellung(Personendaten kunde, int bestellnummer, int artikelnummer, int anzahl, int bezahlung)
-	
+		
+/**
+ * 	
+ * @param artikelnummer
+ * @param anzahl
+ * @return
+ */
 	String bestellstatus(int artikelnummer, int anzahl, )
 	
+/**
+* Falls der Kunde seine Bestellung stornieren möchte. 	
+* @param bestellnummer Mit der Bestellnummer kann man abfragen, welche Artikel in welcher Anzahl wann und wie bestellt wurden.
+* @param kunde Um zu wissen, wer die Artikel bestellt hat
+* @return Der Kunde erhält eine Stornierungsbestätigung.
+*/
+	String stornieren(int bestellnummer, Personendaten kunde);
 	
+/**
+ * Sobald der Versand erfolgt ist, bekommt der Kunde eine Versandbestätigung per E-Mail zugesendet.
+ * @param bestellnummer Mit der Bestellnummer kann man abfragen, welche Artikel in welcher Anzahl wann und wie bestellt wurden.
+ * @param kunde Alle gespeicherten Daten über den Kunden, wie zum Beispiel Name, Vorname, Adresse, Telefonnummer...
+ * @return Der Kunde erhält per E-Mail eine Versandbestätigung.
+ */
+	String versandbestätigug (int bestellnummer, Personendaten kunde);
 }
