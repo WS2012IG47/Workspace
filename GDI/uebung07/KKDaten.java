@@ -5,6 +5,4 @@ package uebung07;
  * Diese sind die Kartennummer, Kartenprüfnummer, Verfallsdatum, Karteninhaber und das Kreditinstitut.
  *
  */
-public class KKDaten {
-
-}
+public class KKDaten {}

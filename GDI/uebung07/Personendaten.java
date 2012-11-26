@@ -5,6 +5,4 @@ package uebung07;
  * Diese sind der Vorname, Nachname, Geburtsdatum, Straße, Hausnummer, Postleitzahl, Wohnort, Telefon und Email Adresse. 
  *
  */
-public class Personendaten {
-
-}
+public class Personendaten {}
