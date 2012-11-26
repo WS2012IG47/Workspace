@@ -15,7 +15,7 @@ interface Hotel{
 
 /**
  * Falls der Kunde seine Reservierung stornieren möchte. 	
- * @param reservierungsnummer Hieraus werden die Daten wie der Zeitraum der Reservierung,... benötigt.
+ * @param reservierungsnummer Diese Nummer wird benötigt, um die vorhandenen Reservierungsdaten abzufragen.
  * @param kunde Um zu wissen, wer die Zimmerreservierung storniert.
  * @return Der Kunde erhält eine Stornierungsbestätigung.
  */
@@ -25,69 +25,29 @@ interface Hotel{
  * 	Wenn der Kunde per Kreditkarte zahlen möchte, werden diese Daten benötigt.
  * @param kreditkarte Hierin sind die Kreditkartendaten des SKunden gespeichert.
  * @param reservierungsnummer Um den Preis berechnen zu können, werden die Daten des Aufenthaltes benötigt
- * @return Zahlungsquittung
+ * @return Zahlungsquittung 
  */
 	String bezahlen(KKDaten kreditkarte, int reservierungsnummer);
 
 /**
  * 	Wenn der Kunde per EC-Karte zahlen möchte, werden diese Daten benötigt.
- * @param ecKarte Hierin sind die EC-Karte des SKunden gespeichert.
- * @param reservierungsnummer Um den Preis berechnen zu können, werden die Daten des Aufenthaltes benötigt
- * @return Zahlungsquittung
+ * @param ecKarte Hier drin sind die EC-Karten Daten des Kunden gespeichert.
+ * @param reservierungsnummer Um den Preis berechnen zu können, werden die Daten des Aufenthaltes benötigt.
+ * @return Zahlungsquittung 
  */
 	String bezahlen(ECKarte ecKarte, int reservierungsnummer);
+	
 /**
- * 	
- * @param bar
- * @param reservierungsnummer
- * @return
- */
-	String bezahlen(boolean bar, int reservierungsnummer);
-/**
- * 	
- * @param reservierungsnummer
- * @return
+ * Beim Check-in des Kunden wird nur die Reservierungsnummer gebraucht.	
+ * @param reservierungsnummer Damit das Hotel weiß, welches Zimmer, auf welchen Namen mit welchen Sonderleistungen der Kunde gebucht hat.
+ * @return Ein String mit allen Daten und Sonderwünchen des Kunden wird ausgegeben.
  */
 	String einchecken(int reservierungsnummer);
+
 /**
- * 	
- * @param reservierungsnummer
- * @return
+ * Beim auschecken benötigt der Kunde seine Reservierungsnummer, damit das Hotel weiß, welches Zimmer abgerechnet werden muss.	
+ * @param reservierungsnummer Um den Preis berechnen zu können, werden die Daten des Aufenthaltes benötigt
+ * @return Es wird eine Rechnung ausgegeben auf der alle eventuellen Sonderwünsche des Kunden mit einbezogen werden.
  */
 	String auschecken(int reservierungsnummer);
-/**
- * 	
- * @param uhrzeit
- */
-	void weckerStellen(String uhrzeit);
-/**
- * 	
- * @param beschreibung
- * @param reservierungsnummer
- */
-	void beschwerdeEinreichen(String beschreibung, int reservierungsnummer);
-/**
- * 	
- * @param artikelnummer
- * @param reservierungsnummer
- */
-	void bestellungAufsZimmer(int artikelnummer, int reservierungsnummer);
-	
-}
-kunde{
-}
-
-kreditkarte{
-	String name;
-	String vorname;
-	String kontonummer;
-	int sicherheitscode;
-}
-eckarte{
-	String name;
-	String vorname;
-	String kontonummer;
-	int bankleitzahl;
-	String bic;
-	String iban;
 }
