@@ -23,7 +23,7 @@ interface Hotel{
 
 /**
  * 	Wenn der Kunde per Kreditkarte zahlen möchte, werden diese Daten benötigt.
- * @param kreditkarte Hierin sind die Kreditkartendaten des SKunden gespeichert.
+ * @param kreditkarte Hierin sind die Kreditkartendaten des Kunden gespeichert.
  * @param reservierungsnummer Um den Preis berechnen zu können, werden die Daten des Aufenthaltes benötigt
  * @return Zahlungsquittung 
  */
