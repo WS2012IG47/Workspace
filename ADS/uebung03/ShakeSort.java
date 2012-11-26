@@ -1,4 +1,5 @@
 package uebung03;
+
 import static gdi.MakeItSimple.*;
 
 /*
@@ -11,41 +12,41 @@ import static gdi.MakeItSimple.*;
 public class ShakeSort {
 	static int equationCounter;
 	static int permutationCounter;
+
 	public static void main(String[] args) {
 		int[] testArray = new int[24];
-		
-// Array gets filled with random numbers (0 to testArray.length)		
+
+		// Array gets filled with random numbers (0 to testArray.length)
 		print("Array mit zufälligen Zahlen von 0 bis 1024: ");
 		for (int i = 0; i < testArray.length; i++) {
 			testArray[i] = (int) Math.floor(Math.random() * (testArray.length));
 			print(testArray[i] + " ");
 		}
 		println("");
-// Call-up function, sort numbers in array 
+		// Call-up function, sort numbers in array
 		shakeSort(testArray);
 		println("");
-		
-// print sorted numbers
+
+		// print sorted numbers
 		println("");
 		print("Das Array, jetzt mit den sortierten Zahlen: ");
 		for (int i = 0; i < testArray.length; i++)
 			print(testArray[i] + " ");
-		println();	
-// print number of equations
+		println();
+		// print number of equations
 		println("Anzahl der Vergleiche: " + equationCounter);
-// print number of permutations
+		// print number of permutations
 		println("Anzahl der Vertauschungen: " + permutationCounter);
 	}
 
-// Function to sort numbers via ShakeSort algorithm	
+	// Function to sort numbers via ShakeSort algorithm
 	public static void shakeSort(int[] targetArray) {
 		boolean unsorted = true;
 		int temp;
-		int indexCounter = 0;
-		int indexCounter2 = 0;
 		while (unsorted) {
 			unsorted = false;
-// This loop counts from left to right. Make a comparison between neighboring numbers and interchange them if necessary		
+			// This loop counts from left to right. Make a comparison between
+			// neighboring numbers and interchange them if necessary
 			for (int i = 0; i < targetArray.length - 1; i++)
 				if (targetArray[i] > targetArray[i + 1]) {
 					equationCounter++;
@@ -54,17 +55,13 @@ public class ShakeSort {
 					permutationCounter++;
 					targetArray[i + 1] = temp;
 					unsorted = true;
-					
-					indexCounter = i;
-				} 
-// print numbers if LOOP finished ONCE.			
-			println();
-			print("Nach einem Durchlauf (von links nach rechts): ");
-//			for (int i= 0; i < targetArray.length; i++)
-//			print(targetArray[i] + " ");
-			println(makeMarkedArray(targetArray, indexCounter, indexCounter2));
-			
-// This loop counts from right to left. Make a comparison between neighboring numbers and interchange them if necessary			
+
+					// print numbers if LOOP finished ONCE.
+					println(makeMarkedArray(targetArray, i, i + 1));
+				}
+
+			// This loop counts from right to left. Make a comparison between
+			// neighboring numbers and interchange them if necessary
 			for (int i = targetArray.length - 1; i > 0; i--)
 				if (targetArray[i] < targetArray[i - 1]) {
 					equationCounter++;
@@ -73,29 +70,24 @@ public class ShakeSort {
 					permutationCounter++;
 					targetArray[i - 1] = temp;
 					unsorted = true;
-					
-					indexCounter2 = i;
-				}
-// print numbers if LOOP finished ONCE.			
-			println("");
-			print("Nach einem Durchlauf (von rechts nach links): ");
-//			for (int i= 0; i < targetArray.length; i++)
-//				print(targetArray[i] + " ");
-			println(makeMarkedArray(targetArray, indexCounter, indexCounter2));
+
+					// print numbers if LOOP finished ONCE.
+					println(makeMarkedArray(targetArray, i, i + 1));
+			}
 		}
 	}
-// Function to highlight numbers swapped	
-	static String makeMarkedArray(int[] a, int k, int j){
-		String out="";
-		int i=0;
-		do{
-		if(i==k || i==j){
-		out+="|"+a[i]+"| ";
-		}else{
-		out+=a[i]+" ";
-		}
-		}while(++i<a.length);
-		return out;
-		}
-}
 
+	// Function to highlight numbers swapped
+	static String makeMarkedArray(int[] a, int k, int j) {
+		String out = "";
+		int i = 0;
+		do {
+			if (i == k || i == j) {
+				out += "|" + a[i] + "|";
+			} else {
+				out += " " +  a[i] + " ";
+			}
+		} while (++i < a.length);
+		return out;
+	}
+}
