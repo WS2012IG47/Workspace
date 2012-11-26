@@ -34,7 +34,7 @@ public class searchFunctionsPerformanceTest {
 
 			int int1 = 0, int2 = 0, int3 = 0, int4 = 0;
 
-			// Make 7500 testings with different random numbers.
+			// Do 7500 testings with different random numbers.
 			for (int i = 0; i < 7500; i++) {
 				int testNumber = (int) Math.floor(Math.random() * testArray.length);
 
@@ -88,7 +88,10 @@ public class searchFunctionsPerformanceTest {
 			int searchAreaStart, int searchAreaEnd, int comparisonCounter) {
 
 		int i = ((searchAreaEnd - searchAreaStart) / 2) + searchAreaStart;
-
+		
+		if (searchInt >= targetArray.length){
+			return -1;
+		}
 		if (searchAreaStart > searchAreaEnd) {
 			return comparisonCounter;
 		}
@@ -119,6 +122,9 @@ public class searchFunctionsPerformanceTest {
 
 			int i = ((searchAreaEnd - searchAreaStart) / 2) + searchAreaStart;
 
+			if (searchInt >= targetArray.length){
+				return -1;
+			}
 			comparisonCounter++;
 			if (targetArray[i] == searchInt) {
 				return comparisonCounter;

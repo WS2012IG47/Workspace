@@ -24,16 +24,16 @@ public class  searchFunctions{
 			testArray[i] = i;
 		}
 		
-		// Search for a random number.
-		int testNumber = (int)Math.floor(Math.random() * testArray.length);
+		// Read number from the console.
+		int testNumber = readInt();
+			readLine();
 			println(searchLastIndex(testArray, testNumber));
 			println(searchFirstIndex(testArray, testNumber));
 			println(searchBinaryRecursive(testArray, testNumber, 0, testArray.length));
 			println(searchBinary(testArray, testNumber, 0, testArray.length));
 	}
 	
-	// Search for the last index in the array and return it's position.
-	// The complete array will be checked and the last saved position will be returned.	
+	// Search for the last index of the searched number in the array and return it's position.
 	public static int searchLastIndex(int[] targetArray, int searchNumber)
 	{
 		int resultIndex = -1;
@@ -48,7 +48,7 @@ public class  searchFunctions{
 		return resultIndex;
 	}
 	
-	// Search for the first position of the number in the array.	
+	// Search for the first position of the searched number in the array.	
 	// The method returns as soon as the first postition of the number were found.
 	public static int searchFirstIndex(int[] targetArray, int searchNumber)
 	{	
@@ -68,7 +68,10 @@ public class  searchFunctions{
 	public static int searchBinaryRecursive(int[] targetArray, int searchInt, int searchAreaStart, int searchAreaEnd) {
 
 		int i = ((searchAreaEnd - searchAreaStart) / 2) + searchAreaStart;
-
+		
+		if (searchInt >= targetArray.length){
+			return -1;
+		}
 		if (searchAreaStart > searchAreaEnd) {
 			return -1;
 		}
@@ -93,10 +96,12 @@ public class  searchFunctions{
 			
 			int i = ((searchAreaEnd - searchAreaStart) / 2) + searchAreaStart;
 			
+			if (searchInt >= targetArray.length){
+				return -1;
+			}	
 			if (targetArray[i] == searchInt) {
 				return i;
-			}
-			
+			}		
 			if (targetArray[i] < searchInt) {
 				searchAreaStart = i + 1;
 			}
