@@ -73,6 +73,7 @@ public class InsertionSort {
 				comparisonCounter++;
 			}		
 			array[j] = newValue;
+			changeCounter++;
 		}
 		String outputInsertionSort = (array.length + " | " + changeCounter + " | " + comparisonCounter);
 		return outputInsertionSort;
