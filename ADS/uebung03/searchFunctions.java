@@ -9,10 +9,6 @@ import static gdi.MakeItSimple.*;
  */
 
 public class  searchFunctions{
-	
-// Geänderte Variablen
-// bereichAnfang = searchAreaStart
-// bereichEnde = searchAreaEnd
 
 	public static void main(String[] args) {
 	

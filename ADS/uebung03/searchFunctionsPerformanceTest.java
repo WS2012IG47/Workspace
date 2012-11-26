@@ -10,12 +10,6 @@ import static gdi.MakeItSimple.*;
 
 public class searchFunctionsPerformanceTest {
 	
-// Geänderte Variablen
-// Arraygröße = ArraySize
-// vergleichzähler = comparisonCounter
-// bereichAnfang = searchAreaStart
-// bereichEnde = searchAreaEnd
-	
 	public static void main(String[] args) {
 
 		int ArraySize = 2048;
@@ -32,7 +26,7 @@ public class searchFunctionsPerformanceTest {
 				testArray[i] = i;
 			}
 
-			int int1 = 0, int2 = 0, int3 = 0, int4 = 0;
+			int int1 = 0, int2 = 0, int3 = 0, int4 = 0, int5 = 0, int6 = 0, int7 = 0, int8 = 0;
 
 			// Do 7500 testings with different random numbers.
 			for (int i = 0; i < 7500; i++) {
@@ -42,6 +36,11 @@ public class searchFunctionsPerformanceTest {
 				int2 += searchFirstIndex(testArray, testNumber);
 				int3 += searchBinaryRecursive(testArray, testNumber, 0, testArray.length, 0);
 				int4 += searchBinary(testArray, testNumber, 0, testArray.length);
+				
+				int5 += searchLastIndex(testArray, -1);
+				int6 += searchFirstIndex(testArray, -1);
+				int7 += searchBinaryRecursive(testArray, -1, 0, testArray.length, 0);
+				int8 += searchBinary(testArray, -1, 0, testArray.length);
 			}
 			
 			// Calculating the average sum from 7500 testings.
@@ -49,11 +48,18 @@ public class searchFunctionsPerformanceTest {
 			int2 /= 7500;
 			int3 /= 7500;
 			int4 /= 7500;
-
-			println("Testergebnisse bei einer ArraySize von: " + ArraySize + " = " + int1 + " | " + int2 + " | " + int3 + " | " + int4);
+			
+			int5 /= 7500;
+			int6 /= 7500;
+			int7 /= 7500;
+			int8 /= 7500;
+			
+			println();
+			println("Erfolgreiche Suche bei einer ArraySize von: " + ArraySize + " = " + int1 + " | " + int2 + " | " + int3 + " | " + int4);
+			println("Erfolglose Suche bei einer ArraySize von: " + ArraySize + " = " + int5 + " | " + int6 + " | " + int7 + " | " + int8);
 
 			ArraySize = ArraySize * 2;
-		}
+		}		
 	}
 	
 	// Search for the last index in the array and return it's position.
@@ -90,7 +96,7 @@ public class searchFunctionsPerformanceTest {
 		int i = ((searchAreaEnd - searchAreaStart) / 2) + searchAreaStart;
 		
 		if (searchInt >= targetArray.length){
-			return -1;
+			return comparisonCounter;
 		}
 		if (searchAreaStart > searchAreaEnd) {
 			return comparisonCounter;
@@ -123,21 +129,19 @@ public class searchFunctionsPerformanceTest {
 			int i = ((searchAreaEnd - searchAreaStart) / 2) + searchAreaStart;
 
 			if (searchInt >= targetArray.length){
-				return -1;
+				return comparisonCounter;
 			}
 			comparisonCounter++;
 			if (targetArray[i] == searchInt) {
 				return comparisonCounter;
 			}
-
 			if (targetArray[i] < searchInt) {
 				searchAreaStart = i + 1;
 			}
-
 			if (targetArray[i] > searchInt) {
 				searchAreaEnd = i - 1;
 			}
 		}
-		return -1;
+		return comparisonCounter;
 	}
 }
