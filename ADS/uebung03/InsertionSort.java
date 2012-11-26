@@ -20,7 +20,7 @@ public class InsertionSort {
 		int[] array5 = new int[2048];
 		int[] array6 = new int[4096];
 		
-			// Loops to fill the arrays with random numbers.
+		// Loops to fill the arrays with random numbers.
 		for (int i = 0; i < array.length; i++){
 			array[i] = (int)Math.floor(Math.random() * array.length);
 			array4[i] = array[i];
@@ -44,15 +44,10 @@ public class InsertionSort {
 		println("Duch Binäre Suche erweiterter Insertion Sort");
 		println("Arraygröße | Anzahl der Vertauschungen | Anzahl der Vergleiche");
 		println(insertionSortBinary(array4));
+		comparisonCounterBinary = 0;
 		println(insertionSortBinary(array5));
+		comparisonCounterBinary = 0;
 		println(insertionSortBinary(array6));
-	}
-	
-	public static void output(int[] array){
-		for (int i = 0; i < array.length; i++){
-			print(array[i] + " ");
-		}	
-		println();
 	}
 	
 	// Insertion Sort.
