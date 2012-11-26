@@ -13,15 +13,14 @@ interface TShirtVersand{
 	String bestellung(Personendaten kunde, int artikelnummer, int anzahl, int bezahlung);
 
 /**
- * 	Um eine Rechnung erstellen zu können, benötigt man die Kundendaten und die Bestellten Artikel, die man durch die Bestellnummer abfragen kann.
- * @param kunde Alle gespeicherten Daten über den Kunden, wie zum Beispiel Name, Vorname, Adresse, Telefonnummer...
+ * Um eine Rechnung erstellen zu können, benötigt man die Kundendaten und die Bestellten Artikel, die man durch die Bestellnummer abfragen kann.
  * @param bestellnummer Mit der Bestellnummer kann man abfragen, welche Artikel in welcher Anzahl wann und wie bestellt wurden.
  * @return Es wird eine Rechnung ausgegeben.
  */
-	String rechnungen(Personendaten kunde, int bestellnummer);	 
+	String rechnungen(int bestellnummer);	 
 		
 /**
- * 	Dieses Interface gibt die Verfügbarkeit der einzelnen Artikel an. Diese Information sit sowohl für den Shop Betrieber wie auch für den Kunden nützlich.
+ * Dieses Interface gibt die Verfügbarkeit der einzelnen Artikel an. Diese Information ist sowohl für den Shop Betrieber wie auch für den Kunden nützlich.
  * @param artikelnummer Hinter der Artikelnummer ist ein einziger, unverwechselbarer Artikel aus dem Shop gespeichert.
  * @param Anzahl Gibt an, wieviele Artikel mit dieser Artikelnummer noch auf Lager sind.
  * @param verfügbarkeit Falls der Artikel nicht verfügbar ist, wird das voraussichtliche Verfügbarkeitsdatum angegeben.
@@ -30,11 +29,11 @@ interface TShirtVersand{
 	String verfügbarkeit(int Artikelnummer, int Anzahl, String erneuteLieferung);
 	
 /**
-* Falls der Kunde seine Bestellung stornieren möchte. 	
-* @param bestellnummer Mit der Bestellnummer kann man abfragen, welche Artikel in welcher Anzahl wann und wie bestellt wurden.
-* @param kunde Um zu wissen, wer die Artikel bestellt hat
-* @return Der Kunde erhält eine Stornierungsbestätigung.
-*/
+ * Falls der Kunde seine Bestellung stornieren möchte. 	
+ * @param bestellnummer Mit der Bestellnummer kann man abfragen, welche Artikel in welcher Anzahl wann und wie bestellt wurden.
+ * @param kunde Um zu wissen, wer die Artikel bestellt hat
+ * @return Der Kunde erhält eine Stornierungsbestätigung.
+ */
 	String stornieren(int bestellnummer, Personendaten kunde);
 	
 /**

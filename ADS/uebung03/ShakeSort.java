@@ -17,10 +17,11 @@ public class ShakeSort {
 		int[] testArray = new int[24];
 
 		// Array gets filled with random numbers (0 to testArray.length)
-		print("Array mit zufälligen Zahlen von 0 bis 1024: ");
+		println("Array mit zufälligen Zahlen: ");
+		print(" ");
 		for (int i = 0; i < testArray.length; i++) {
 			testArray[i] = (int) Math.floor(Math.random() * (testArray.length));
-			print(testArray[i] + " ");
+			print(testArray[i] + "  ");
 		}
 		println("");
 		// Call-up function, sort numbers in array
@@ -30,6 +31,7 @@ public class ShakeSort {
 		// print sorted numbers
 		println("");
 		print("Das Array, jetzt mit den sortierten Zahlen: ");
+		
 		for (int i = 0; i < testArray.length; i++)
 			print(testArray[i] + " ");
 		println();
@@ -43,10 +45,12 @@ public class ShakeSort {
 	public static void shakeSort(int[] targetArray) {
 		boolean unsorted = true;
 		int temp;
+		
 		while (unsorted) {
 			unsorted = false;
+			
 			// This loop counts from left to right. Make a comparison between
-			// neighboring numbers and interchange them if necessary
+			// neighboring numbers and interchange them if necessary.
 			for (int i = 0; i < targetArray.length - 1; i++)
 				if (targetArray[i] > targetArray[i + 1]) {
 					equationCounter++;
@@ -61,7 +65,7 @@ public class ShakeSort {
 				}
 
 			// This loop counts from right to left. Make a comparison between
-			// neighboring numbers and interchange them if necessary
+			// neighboring numbers and interchange them if necessary.
 			for (int i = targetArray.length - 1; i > 0; i--)
 				if (targetArray[i] < targetArray[i - 1]) {
 					equationCounter++;
@@ -77,7 +81,7 @@ public class ShakeSort {
 		}
 	}
 
-	// Function to highlight numbers swapped
+	// Function to highlight swapped numbers.
 	static String makeMarkedArray(int[] a, int k, int j) {
 		String out = "";
 		int i = 0;
