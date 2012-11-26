@@ -60,7 +60,7 @@ public class InsertionSort {
 	public static String insertionSort(int[] array){
 		int newValue, j, changeCounter, comparisonCounter;
 		changeCounter = comparisonCounter = 0;
-		// output(array);
+
 		for (int i = 1; i < array.length; i++){
 			newValue = array[i];
 			j = i;
@@ -79,7 +79,6 @@ public class InsertionSort {
 			}		
 			array[j] = newValue;
 		}
-		// output(array);
 		String outputInsertionSort = (array.length + " | " + changeCounter + " | " + comparisonCounter);
 		return outputInsertionSort;
 	}
