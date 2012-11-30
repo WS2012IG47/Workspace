@@ -7,10 +7,10 @@ interface TShirtVersand{
  * @param kunde Alle gespeicherten Daten über den Kunden, wie zum Beispiel Name, Vorname, Adresse, Telefonnummer...
  * @param artikelnummer Hinter der Artikelnummer ist ein einziger, unverwechselbarer Artikel aus dem Shop gespeichert.
  * @param anzahl Die Anzahl der einzenen Artikel (Artikelnummern)
- * @param bezahlung Auf welche Art möchte der Kunde bezahlen. Kreditkarte, PayPal, EC-Karte, Überweisung, Barzahlung bei Abholung, Rechnung.
+ * @param bezahlung Auf welche Art möchte der Kunde bezahlen. Kreditkarte (1), PayPal (2), EC-Karte (3), Überweisung (4), Barzahlung bei Abholung (5), Rechnung (6). 
  * @return Es wird eine Bestellbestätigung ausgegeben, in der für den Kunden alle Artikel und Daten ersichtlich sind.
  */
-	String bestellung(Personendaten kunde, int artikelnummer, int anzahl, int bezahlung);
+	String bestellung(Personendaten kunde, int[] artikelnummer, int[] anzahl, int bezahlung);
 
 /**
  * Um eine Rechnung erstellen zu können, benötigt man die Kundendaten und die Bestellten Artikel, die man durch die Bestellnummer abfragen kann.
