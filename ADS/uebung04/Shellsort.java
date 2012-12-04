@@ -22,7 +22,7 @@ public class Shellsort {
 		}
 	
 		// Print the counted changes and comparisons.		
-		println("Shellsort");
+		println("Shell -Sort");
 		println();
 		println(shellsort(array));
 		println();
