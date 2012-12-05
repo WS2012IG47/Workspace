@@ -20,6 +20,19 @@ public class IntReader {
 		}
 	}
 	
+	public static int countInt(String datei){
+		int countInt = 0;
+		Object opendatei = openInputFile(datei);
+		
+		while (!isEndOfInputFile(opendatei)){
+			if (readChar(opendatei) == ' ')
+				countInt++;
+		}
+		closeInputFile(opendatei);
+		return countInt;
+		
+	}
+	
 	public int readAndNextNumber()
 	{
 		if(numberAvailable)

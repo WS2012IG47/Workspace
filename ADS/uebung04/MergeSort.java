@@ -13,14 +13,27 @@ public class MergeSort {
 
 	public static void main(String[] args) {
 		println("Bitte geben sie den Pfad zu dem Ordner welcher die Dateien \"numbers.txt\", \"hilfsbandEins.txt\" und \"hilfsbandZwei.txt\" enthält"); 
-		mergeSort(readLine());
+		String quelldateiPfad = readLine();
+		
+		String datei = quelldateiPfad + "/numbers.txt";
+		int countedNumbers = (IntReader.countInt(datei));
+		println("Anzahl der Nummern: " + countedNumbers);
+		
+		mergeSort(quelldateiPfad, countedNumbers);
+		
 	}
-	
-	public static void mergeSort(String filePath)
-	{
-		String filename1 = filePath + "\\numbers.txt";
-		String filename2 = filePath + "\\hilfsbandEins.txt";
-		String filename3 = filePath + "\\hilfsbandZwei.txt";
+	// /Users/Padombar/Dropbox/Informatik/workspace/GIT/ADS/uebung04
+	public static void mergeSort(String filePath, int countedNumbers)
+	{	
+		// Windows Schreibweise
+//		String filename1 = filePath + "\\numbers.txt";
+//		String filename2 = filePath + "\\hilfsbandEins.txt";
+//		String filename3 = filePath + "\\hilfsbandZwei.txt";
+
+		// Mac Schreibweise
+		String filename1 = filePath + "/numbers.txt";
+		String filename2 = filePath + "/hilfsbandEins.txt";
+		String filename3 = filePath + "/hilfsbandZwei.txt";
 
 		if (!isFilePresent(filename1)) {
 			println("Hey die Datei: " + filename1 + " fehlt!");
@@ -38,7 +51,7 @@ public class MergeSort {
 			Object hilfsbandEins;
 			Object hilfsbandZwei;
 
-			for (int lauflänge = 1; lauflänge < 20; lauflänge = lauflänge * 2) {
+			for (int lauflänge = 1; lauflänge < countedNumbers; lauflänge = lauflänge * 2) {
 				IntReader quellbandReader = new IntReader(filename1);
 				hilfsbandEins = openOutputFile(filename2);
 				hilfsbandZwei = openOutputFile(filename3);
