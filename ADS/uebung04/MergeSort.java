@@ -22,7 +22,18 @@ public class MergeSort {
 		String filename2 = filePath + "\\hilfsbandEins.txt";
 		String filename3 = filePath + "\\hilfsbandZwei.txt";
 
-		if (isFilePresent(filename1)) {
+		if (!isFilePresent(filename1)) {
+			println("Hey die Datei: " + filename1 + " fehlt!");
+			return;
+		}
+		if (!isFilePresent(filename2)) {
+			println("Hey die Datei: " + filename2 + " fehlt!");
+			return;
+		}
+		if (!isFilePresent(filename2)) {
+			println("Hey die Datei: " + filename3 + " fehlt!");
+			return;
+		}
 			Object quellband;
 			Object hilfsbandEins;
 			Object hilfsbandZwei;
@@ -51,7 +62,6 @@ public class MergeSort {
 				quellband = openInputFile(filename1);
 				printTape(quellband, '*', lauflänge);
 				closeInputFile(quellband);
-			}
 		}
 	}
 
