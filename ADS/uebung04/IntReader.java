@@ -2,30 +2,30 @@ package uebung04;
 import static gdi.MakeItSimple.*;
 public class IntReader {
 
-	private Object Quelldatei;
+	private Object Sourcefile;
 	private boolean numberAvailable;
 	private int number;
 	
-	public IntReader(String QuelldateiPfad)	{
-		Quelldatei = openInputFile(QuelldateiPfad);
+	public IntReader(String SourcefilePath)	{
+		Sourcefile = openInputFile(SourcefilePath);
 		
-		if(isEndOfInputFile(Quelldatei)) {
+		if(isEndOfInputFile(Sourcefile)) {
 			numberAvailable = false;
 		} else {
-			number = readInt(Quelldatei);
+			number = readInt(Sourcefile);
 			numberAvailable = true;
 		}
 	}
 	
-	public static int countInt(String datei){
+	public static int countInt(String filePath){
 		int countInt = 0;
-		Object opendatei = openInputFile(datei);
+		Object openFile = openInputFile(filePath);
 		
-		while (!isEndOfInputFile(opendatei)){
-			if (readChar(opendatei) == ' ')
+		while (!isEndOfInputFile(openFile)){
+			if (readChar(openFile) == ' ')
 				countInt++;
 		}
-		closeInputFile(opendatei);
+		closeInputFile(openFile);
 		return countInt;
 	}
 	
@@ -33,12 +33,12 @@ public class IntReader {
 		if(numberAvailable) {
 			int tempNumber;
 			
-			if(isEndOfInputFile(Quelldatei)) {
+			if(isEndOfInputFile(Sourcefile)) {
 				tempNumber = number;
 				numberAvailable = false;
 			} else {
 				tempNumber = number;
-				number = readInt(Quelldatei);
+				number = readInt(Sourcefile);
 			}
 			
 			return tempNumber;
@@ -54,8 +54,8 @@ public class IntReader {
 	}
 	
 	public void nextNumber() {
-		if(!isEndOfInputFile(Quelldatei)) {
-			number = readInt(Quelldatei);
+		if(!isEndOfInputFile(Sourcefile)) {
+			number = readInt(Sourcefile);
 		} else {
 			// wir werden alle sterben!!!
 		}
@@ -66,6 +66,6 @@ public class IntReader {
 	}
 	
 	public void closeIntReader() {
-		closeInputFile(Quelldatei);
+		closeInputFile(Sourcefile);
 	}
 }

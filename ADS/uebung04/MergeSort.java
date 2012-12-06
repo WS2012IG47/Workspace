@@ -9,17 +9,26 @@ import static gdi.MakeItSimple.*;
  * Timm Dobhan, Matrikelnummer: 1232995
  */
 
+// quellband = sourceFile
+// hilfsbandEins = helpFileOne
+// helpFileTwo = helpFileTwo
+// lauflength = runlength
+// helpFileTwoZähler = helpFileTwoCounter
+// länge = length
+// ausgabelength = printlength
+// ausgabeBand = outputFile
+
 public class MergeSort {
 
 	public static void main(String[] args) {
-		println("Bitte geben sie den Pfad zu dem Ordner welcher die Dateien \"numbers.txt\", \"hilfsbandEins.txt\" und \"hilfsbandZwei.txt\" enthält"); 
-		String quelldateiPfad = readLine();
+		println("Bitte geben sie den Pfad zu dem Ordner welcher die Dateien \"numbers.txt\", \"helpFileOne.txt\" und \"helpFileTwo.txt\" enthält"); 
+		String source = readLine();
 		
-		String datei = quelldateiPfad + "/numbers.txt";
-		int countedNumbers = (IntReader.countInt(datei));
+		String filePath = source + "/numbers.txt";
+		int countedNumbers = (IntReader.countInt(filePath));
 		println("Anzahl der Nummern: " + countedNumbers);
 		
-		mergeSort(quelldateiPfad, countedNumbers);
+		mergeSort(source, countedNumbers);
 		
 	}
 	// /Users/Padombar/Dropbox/Informatik/workspace/GIT/ADS/uebung04
@@ -27,92 +36,92 @@ public class MergeSort {
 	{	
 		// Windows Schreibweise
 //		String filename1 = filePath + "\\numbers.txt";
-//		String filename2 = filePath + "\\hilfsbandEins.txt";
-//		String filename3 = filePath + "\\hilfsbandZwei.txt";
+//		String filename2 = filePath + "\\helpFileOne.txt";
+//		String filename3 = filePath + "\\helpFileTwo.txt";
 
 		// Mac Schreibweise
 		String filename1 = filePath + "/numbers.txt";
-		String filename2 = filePath + "/hilfsbandEins.txt";
-		String filename3 = filePath + "/hilfsbandZwei.txt";
+		String filename2 = filePath + "/helpFileOne.txt";
+		String filename3 = filePath + "/helpFileTwo.txt";
 
 		if (!isFilePresent(filename1)) {
-			println("Hey die Datei: " + filename1 + " fehlt!");
+			println("Hey, die Datei: " + filename1 + " fehlt!");
 			return;
 		}
 		if (!isFilePresent(filename2)) {
-			println("Hey die Datei: " + filename2 + " fehlt!");
+			println("Hey, die Datei: " + filename2 + " fehlt!");
 			return;
 		}
 		if (!isFilePresent(filename2)) {
-			println("Hey die Datei: " + filename3 + " fehlt!");
+			println("Hey, die Datei: " + filename3 + " fehlt!");
 			return;
 		}
-			Object quellband;
-			Object hilfsbandEins;
-			Object hilfsbandZwei;
+			Object sourceFile;
+			Object helpFileOne;
+			Object helpFileTwo;
 
-			for (int lauflänge = 1; lauflänge < countedNumbers; lauflänge = lauflänge * 2) {
-				IntReader quellbandReader = new IntReader(filename1);
-				hilfsbandEins = openOutputFile(filename2);
-				hilfsbandZwei = openOutputFile(filename3);
+			for (int runlength = 1; runlength < countedNumbers; runlength = runlength * 2) {
+				IntReader sourceFileReader = new IntReader(filename1);
+				helpFileOne = openOutputFile(filename2);
+				helpFileTwo = openOutputFile(filename3);
 
-				split(lauflänge, quellbandReader, hilfsbandEins, hilfsbandZwei);
+				split(runlength, sourceFileReader, helpFileOne, helpFileTwo);
 
-				quellbandReader.closeIntReader();
-				closeOutputFile(hilfsbandEins);
-				closeOutputFile(hilfsbandZwei);
+				sourceFileReader.closeIntReader();
+				closeOutputFile(helpFileOne);
+				closeOutputFile(helpFileTwo);
 
-					quellband = openInputFile(filename2);
-					printTape(quellband, '*', lauflänge, 25);
-					closeInputFile(quellband);
+					sourceFile = openInputFile(filename2);
+					printTape(sourceFile, '*', runlength, 25);
+					closeInputFile(sourceFile);
 				
-					quellband = openInputFile(filename3);
-					printTape(quellband, '*', lauflänge, 25);
-					closeInputFile(quellband);
+					sourceFile = openInputFile(filename3);
+					printTape(sourceFile, '*', runlength, 25);
+					closeInputFile(sourceFile);
 				
-				quellband = openOutputFile(filename1);
-				IntReader hilfsbandEinsReader = new IntReader(filename2);
-				IntReader hilfsbandZweiReader = new IntReader(filename3);
+				sourceFile = openOutputFile(filename1);
+				IntReader helpFileOneReader = new IntReader(filename2);
+				IntReader helpFileTwoReader = new IntReader(filename3);
 
-				merge(lauflänge, quellband, hilfsbandEinsReader, hilfsbandZweiReader);
+				merge(runlength, sourceFile, helpFileOneReader, helpFileTwoReader);
 
-				closeOutputFile(quellband);
-				hilfsbandEinsReader.closeIntReader();
-				hilfsbandZweiReader.closeIntReader();
+				closeOutputFile(sourceFile);
+				helpFileOneReader.closeIntReader();
+				helpFileTwoReader.closeIntReader();
 
-					quellband = openInputFile(filename1);
-					printTape(quellband, '*', lauflänge * 2, 25);
-					closeInputFile(quellband);
+					sourceFile = openInputFile(filename1);
+					printTape(sourceFile, '*', runlength * 2, 25);
+					closeInputFile(sourceFile);
 					println();
 		}
 	}
 
-	public static void merge(int lauflänge, Object quellband, IntReader hilfsbandEins, IntReader hilfsbandZwei) {
-		while (onePartOfMerge(lauflänge, quellband, hilfsbandEins, hilfsbandZwei));
+	public static void merge(int runlength, Object sourceFile, IntReader helpFileOne, IntReader helpFileTwo) {
+		while (onePartOfMerge(runlength, sourceFile, helpFileOne, helpFileTwo));
 	}
 
-	public static boolean onePartOfMerge(int lauflänge, Object quellband, IntReader hilfsbandEins, IntReader hilfsbandZwei) {
-		int hilfsbandEinsZähler = 0;
-		int hilfsbandZweiZähler = 0;
+	public static boolean onePartOfMerge(int runlength, Object sourceFile, IntReader helpFileOne, IntReader helpFileTwo) {
+		int helpFileOneCounter = 0;
+		int helpFileTwoCounter = 0;
 
 		while (true) {
 
 			// ---------> Band1 EOF
-			if (!hilfsbandEins.isNumberAvailable()) {
-				while (hilfsbandZwei.isNumberAvailable()) {
-					print(quellband, "  ");
-					print(quellband, hilfsbandZwei.readAndNextNumber());
+			if (!helpFileOne.isNumberAvailable()) {
+				while (helpFileTwo.isNumberAvailable()) {
+					print(sourceFile, "  ");
+					print(sourceFile, helpFileTwo.readAndNextNumber());
 				}
 				return false;
 			}
 			// <--------- Band1 EOF
 
 			// ---------> Band1 EOS
-			if (!(hilfsbandEinsZähler < lauflänge)) {
-				while (hilfsbandZweiZähler < lauflänge) {
-					print(quellband, "  ");
-					print(quellband, hilfsbandZwei.readAndNextNumber());
-					hilfsbandZweiZähler++;
+			if (!(helpFileOneCounter < runlength)) {
+				while (helpFileTwoCounter < runlength) {
+					print(sourceFile, "  ");
+					print(sourceFile, helpFileTwo.readAndNextNumber());
+					helpFileTwoCounter++;
 				}
 				return true;
 
@@ -120,10 +129,10 @@ public class MergeSort {
 			// <--------- Band1 EOS
 
 			// ---------> Band2 EOF
-			if (!hilfsbandZwei.isNumberAvailable()) {
-				while (hilfsbandEins.isNumberAvailable()) {
-					print(quellband, "  ");
-					print(quellband, hilfsbandEins.readAndNextNumber());
+			if (!helpFileTwo.isNumberAvailable()) {
+				while (helpFileOne.isNumberAvailable()) {
+					print(sourceFile, "  ");
+					print(sourceFile, helpFileOne.readAndNextNumber());
 				}
 
 				return false;
@@ -131,39 +140,40 @@ public class MergeSort {
 			// <--------- Band2 EOF
 
 			// ---------> Band2 EOS
-			if (!(hilfsbandZweiZähler < lauflänge)) {
-				while (hilfsbandEinsZähler < lauflänge) {
-					print(quellband, "  ");
-					print(quellband, hilfsbandEins.readAndNextNumber());
-					hilfsbandEinsZähler++;
+			if (!(helpFileTwoCounter < runlength)) {
+				while (helpFileOneCounter < runlength) {
+					print(sourceFile, "  ");
+					print(sourceFile, helpFileOne.readAndNextNumber());
+					helpFileOneCounter++;
 				}
 				return true;
 			}
 			// <--------- Band2 EOS
 
-			if (hilfsbandEins.readNumber() <= hilfsbandZwei.readNumber()) {
-				print(quellband, "  ");
-				print(quellband, hilfsbandEins.readAndNextNumber());
-				hilfsbandEinsZähler++;
+			if (helpFileOne.readNumber() <= helpFileTwo.readNumber()) {
+				print(sourceFile, "  ");
+				print(sourceFile, helpFileOne.readAndNextNumber());
+				helpFileOneCounter++;
 			} 
 			else 
 			{
-				print(quellband, "  ");
-				print(quellband, hilfsbandZwei.readAndNextNumber());
-				hilfsbandZweiZähler++;
+				print(sourceFile, "  ");
+				print(sourceFile, helpFileTwo.readAndNextNumber());
+				helpFileTwoCounter++;
 			}
 		}
 	}
 
-	public static void split(int lauflänge, IntReader quellband, Object hilfsbandEins, Object hilfsbandZwei) {
+// Split method
+	public static void split(int runlength, IntReader sourceFile, Object helpFileOne, Object helpFileTwo) {
 		boolean bandauswahl = true;
 
-		while (quellband.isNumberAvailable()) {
+		while (sourceFile.isNumberAvailable()) {
 			if (bandauswahl) {
-				for (int i = 0; i < lauflänge; i++) {
-					if (quellband.isNumberAvailable()) {
-						print(hilfsbandEins, " ");
-						print(hilfsbandEins, quellband.readAndNextNumber());
+				for (int i = 0; i < runlength; i++) {
+					if (sourceFile.isNumberAvailable()) {
+						print(helpFileOne, " ");
+						print(helpFileOne, sourceFile.readAndNextNumber());
 					} else {
 						return;
 					}
@@ -171,10 +181,10 @@ public class MergeSort {
 
 				bandauswahl = false;
 			} else {
-				for (int i = 0; i < lauflänge; i++) {
-					if (quellband.isNumberAvailable()) {
-						print(hilfsbandZwei, " ");
-						print(hilfsbandZwei, quellband.readAndNextNumber());
+				for (int i = 0; i < runlength; i++) {
+					if (sourceFile.isNumberAvailable()) {
+						print(helpFileTwo, " ");
+						print(helpFileTwo, sourceFile.readAndNextNumber());
 					} else {
 						return;
 					}
@@ -185,15 +195,15 @@ public class MergeSort {
 
 	}
 
-	public static void printTape(Object ausgabeBand, char delimiter, int länge, int ausgabelänge) {
+	public static void printTape(Object outputFile, char delimiter, int length, int printlength) {
 		int i = 0;
 
-		for(int i2 = 0; i2 < ausgabelänge  && !isEndOfInputFile(ausgabeBand); i2++) {
-			if (i == länge) {
+		for(int i2 = 0; i2 < printlength  && !isEndOfInputFile(outputFile); i2++) {
+			if (i == length) {
 				print(delimiter);
 				i = 0;
 			}
-			print(" " + readInt(ausgabeBand) + " ");
+			print(" " + readInt(outputFile) + " ");
 			i++;
 		}
 		println();
