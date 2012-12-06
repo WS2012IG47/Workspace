@@ -6,15 +6,12 @@ public class IntReader {
 	private boolean numberAvailable;
 	private int number;
 	
-	public IntReader(String QuelldateiPfad)
-	{
+	public IntReader(String QuelldateiPfad)	{
 		Quelldatei = openInputFile(QuelldateiPfad);
 		
-		if(isEndOfInputFile(Quelldatei))
-		{
+		if(isEndOfInputFile(Quelldatei)) {
 			numberAvailable = false;
-		}
-		else {
+		} else {
 			number = readInt(Quelldatei);
 			numberAvailable = true;
 		}
@@ -30,22 +27,16 @@ public class IntReader {
 		}
 		closeInputFile(opendatei);
 		return countInt;
-		
 	}
 	
-	public int readAndNextNumber()
-	{
-		if(numberAvailable)
-		{
+	public int readAndNextNumber() {
+		if(numberAvailable) {
 			int tempNumber;
 			
-			if(isEndOfInputFile(Quelldatei))
-			{
+			if(isEndOfInputFile(Quelldatei)) {
 				tempNumber = number;
 				numberAvailable = false;
-			}
-			else
-			{
+			} else {
 				tempNumber = number;
 				number = readInt(Quelldatei);
 			}
@@ -58,30 +49,23 @@ public class IntReader {
 		return Integer.MAX_VALUE;
 	}
 	
-	public int readNumber()
-	{
+	public int readNumber()	{
 		return number;
 	}
 	
-	public void nextNumber()
-	{
-		if(!isEndOfInputFile(Quelldatei))
-		{
+	public void nextNumber() {
+		if(!isEndOfInputFile(Quelldatei)) {
 			number = readInt(Quelldatei);
-		}
-		else
-		{
+		} else {
 			// wir werden alle sterben!!!
 		}
 	}
 	
-	public boolean isNumberAvailable()
-	{
+	public boolean isNumberAvailable() {
 		return numberAvailable;
 	}
 	
-	public void closeIntReader()
-	{
+	public void closeIntReader() {
 		closeInputFile(Quelldatei);
 	}
 }

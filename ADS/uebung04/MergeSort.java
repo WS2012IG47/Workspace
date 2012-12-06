@@ -62,6 +62,14 @@ public class MergeSort {
 				closeOutputFile(hilfsbandEins);
 				closeOutputFile(hilfsbandZwei);
 
+					quellband = openInputFile(filename2);
+					printTape(quellband, '*', lauflänge, 25);
+					closeInputFile(quellband);
+				
+					quellband = openInputFile(filename3);
+					printTape(quellband, '*', lauflänge, 25);
+					closeInputFile(quellband);
+				
 				quellband = openOutputFile(filename1);
 				IntReader hilfsbandEinsReader = new IntReader(filename2);
 				IntReader hilfsbandZweiReader = new IntReader(filename3);
@@ -72,9 +80,10 @@ public class MergeSort {
 				hilfsbandEinsReader.closeIntReader();
 				hilfsbandZweiReader.closeIntReader();
 
-				quellband = openInputFile(filename1);
-				printTape(quellband, '*', lauflänge);
-				closeInputFile(quellband);
+					quellband = openInputFile(filename1);
+					printTape(quellband, '*', lauflänge * 2, 25);
+					closeInputFile(quellband);
+					println();
 		}
 	}
 
@@ -170,26 +179,23 @@ public class MergeSort {
 						return;
 					}
 				}
-
 				bandauswahl = true;
 			}
 		}
 
 	}
 
-	public static void printTape(Object ausgabeBand, char delimiter, int länge) {
+	public static void printTape(Object ausgabeBand, char delimiter, int länge, int ausgabelänge) {
 		int i = 0;
 
-		while (!isEndOfInputFile(ausgabeBand)) {
+		for(int i2 = 0; i2 < ausgabelänge  && !isEndOfInputFile(ausgabeBand); i2++) {
 			if (i == länge) {
 				print(delimiter);
 				i = 0;
 			}
-
 			print(" " + readInt(ausgabeBand) + " ");
 			i++;
 		}
-
 		println();
 	}
 
