@@ -44,6 +44,7 @@ public class IntReader {
 			return tempNumber;
 		}
 		
+		println("Achtung fehler in zeile 47 von Intreader");
 		// Hier würde ein exeption geworfen werden wen wir das schon gelernt hätten.
 		// Um das zu vermeiden kann mit isNumberAvailable geprüft werden ob eine zahl verfügbar ist.
 		return Integer.MAX_VALUE;
@@ -57,7 +58,9 @@ public class IntReader {
 		if(!isEndOfInputFile(Sourcefile)) {
 			number = readInt(Sourcefile);
 		} else {
-			// wir werden alle sterben!!!
+			println("Achtung fehler in zeile 61 von Intreader");
+			// Hier würde ein exeption geworfen werden wen wir das schon gelernt hätten.
+			// Um das zu vermeiden kann mit isNumberAvailable geprüft werden ob eine zahl verfügbar ist.
 		}
 	}
 	

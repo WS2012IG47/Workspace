@@ -24,7 +24,7 @@ public class MergeSort {
 		println("Bitte geben sie den Pfad zu dem Ordner welcher die Dateien \"numbers.txt\", \"helpFileOne.txt\" und \"helpFileTwo.txt\" enthält"); 
 		String source = readLine();
 		
-		String filePath = source + "/numbers.txt";
+		String filePath = source + "\\numbers.txt";
 		int countedNumbers = (IntReader.countInt(filePath));
 		println("Anzahl der Nummern: " + countedNumbers);
 		
@@ -35,14 +35,14 @@ public class MergeSort {
 	public static void mergeSort(String filePath, int countedNumbers)
 	{	
 		// Windows Schreibweise
-//		String filename1 = filePath + "\\numbers.txt";
-//		String filename2 = filePath + "\\helpFileOne.txt";
-//		String filename3 = filePath + "\\helpFileTwo.txt";
+		String filename1 = filePath + "\\numbers.txt";
+		String filename2 = filePath + "\\helpFileOne.txt";
+		String filename3 = filePath + "\\helpFileTwo.txt";
 
 		// Mac Schreibweise
-		String filename1 = filePath + "/numbers.txt";
-		String filename2 = filePath + "/helpFileOne.txt";
-		String filename3 = filePath + "/helpFileTwo.txt";
+//		String filename1 = filePath + "/numbers.txt";
+//		String filename2 = filePath + "/helpFileOne.txt";
+//		String filename3 = filePath + "/helpFileTwo.txt";
 
 		if (!isFilePresent(filename1)) {
 			println("Hey, die Datei: " + filename1 + " fehlt!");
@@ -56,6 +56,7 @@ public class MergeSort {
 			println("Hey, die Datei: " + filename3 + " fehlt!");
 			return;
 		}
+		
 			Object sourceFile;
 			Object helpFileOne;
 			Object helpFileTwo;
@@ -106,7 +107,7 @@ public class MergeSort {
 
 		while (true) {
 
-			// ---------> Band1 EOF
+			// ---------> Band1 End of file.
 			if (!helpFileOne.isNumberAvailable()) {
 				while (helpFileTwo.isNumberAvailable()) {
 					print(sourceFile, "  ");
@@ -114,11 +115,11 @@ public class MergeSort {
 				}
 				return false;
 			}
-			// <--------- Band1 EOF
+			// <--------- Band1 End of file.
 
-			// ---------> Band1 EOS
+			// ---------> Band1 End of runlength.
 			if (!(helpFileOneCounter < runlength)) {
-				while (helpFileTwoCounter < runlength) {
+				while (helpFileTwoCounter < runlength && helpFileTwo.isNumberAvailable()) {
 					print(sourceFile, "  ");
 					print(sourceFile, helpFileTwo.readAndNextNumber());
 					helpFileTwoCounter++;
@@ -126,9 +127,9 @@ public class MergeSort {
 				return true;
 
 			}
-			// <--------- Band1 EOS
+			// <--------- Band1 End of runlength.
 
-			// ---------> Band2 EOF
+			// ---------> Band2 End of file.
 			if (!helpFileTwo.isNumberAvailable()) {
 				while (helpFileOne.isNumberAvailable()) {
 					print(sourceFile, "  ");
@@ -137,18 +138,18 @@ public class MergeSort {
 
 				return false;
 			}
-			// <--------- Band2 EOF
+			// <--------- Band2 End of file.
 
-			// ---------> Band2 EOS
+			// ---------> Band2 End of runlength.
 			if (!(helpFileTwoCounter < runlength)) {
-				while (helpFileOneCounter < runlength) {
+				while (helpFileOneCounter < runlength && helpFileOne.isNumberAvailable()) {
 					print(sourceFile, "  ");
 					print(sourceFile, helpFileOne.readAndNextNumber());
 					helpFileOneCounter++;
 				}
 				return true;
 			}
-			// <--------- Band2 EOS
+			// <--------- Band2 End of runlength.
 
 			if (helpFileOne.readNumber() <= helpFileTwo.readNumber()) {
 				print(sourceFile, "  ");
